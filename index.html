@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para kay Marca 💗</title>
+  <style>
+    :root {
+      --pink: #ff5d91;
+      --deep: #8f214f;
+      --cream: #fff6fa;
+      --glass: rgba(255,255,255,.76);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color: #65233e;
+      background:
+        radial-gradient(circle at 12% 15%, #ffe0ec 0 8%, transparent 25%),
+        radial-gradient(circle at 90% 80%, #ffd4e4 0 10%, transparent 27%),
+        linear-gradient(135deg, #fff7fb, #ffe4ef 48%, #fff0f6);
+    }
+    .sparkle-bg { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+    .float-heart {
+      position: absolute; bottom: -50px; color: #ff6e9d; opacity: .48;
+      animation: floatUp linear infinite; filter: drop-shadow(0 3px 5px #ff9dbb55);
+    }
+    @keyframes floatUp {
+      from { transform: translateY(0) rotate(0deg); opacity: 0; }
+      15% { opacity: .55; }
+      to { transform: translateY(-115vh) rotate(35deg); opacity: 0; }
+    }
+    main { position: relative; z-index: 1; width: min(1000px, 92%); margin: auto; padding: 38px 0 55px; text-align: center; }
+    .eyebrow { letter-spacing: 4px; text-transform: uppercase; font-size: .75rem; color: #bd4774; font-weight: 800; }
+    h1 { margin: 10px 0 8px; font-size: clamp(2.25rem, 7vw, 4.8rem); line-height: 1.05; color: var(--deep); }
+    h1 span { color: var(--pink); }
+    .subtitle { max-width: 610px; margin: 0 auto 27px; line-height: 1.7; font-size: 1.02rem; color: #8d4563; }
+    .flowing { display: inline-block; min-height: 1.8em; font-size: clamp(1.1rem, 3vw, 1.55rem); font-weight: 800; color: #e83e7b; margin-bottom: 24px; }
+    .flowing::after { content: " ♥"; animation: pulse 1s infinite; }
+    @keyframes pulse { 50% { opacity: .25; transform: scale(.85); } }
+    .cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin: 4px auto 28px; }
+    .flip-card { width: min(310px, 100%); height: 400px; perspective: 1200px; cursor: pointer; outline: none; }
+    .flip-inner { position: relative; width: 100%; height: 100%; transition: transform .8s cubic-bezier(.2,.7,.2,1); transform-style: preserve-3d; }
+    .flip-card.flipped .flip-inner, .flip-card:focus-visible .flip-inner { transform: rotateY(180deg); }
+    .face {
+      position: absolute; inset: 0; border: 1px solid #ffffffb8; border-radius: 25px;
+      overflow: hidden; backface-visibility: hidden; box-shadow: 0 18px 45px #a72d5b20;
+    }
+    .front { background: white; padding: 12px 12px 18px; }
+    .front img { width: 100%; height: 315px; object-fit: cover; border-radius: 17px; display: block; }
+    .photo-caption { padding: 13px 5px 0; font-weight: 800; color: #9e315d; }
+    .tap-hint { font-size: .78rem; color: #c36b8d; font-weight: 500; margin-top: 4px; }
+    .back {
+      transform: rotateY(180deg); display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 26px; background: linear-gradient(145deg, #fffafd, #ffd9e8);
+    }
+    .back .heart { font-size: 2.6rem; animation: pulse 1.2s infinite; }
+    .back h2 { margin: 10px 0; font-size: 1.65rem; color: #c42d68; }
+    .back p { margin: 0; line-height: 1.75; font-size: .98rem; }
+    .note { max-width: 690px; margin: 10px auto 24px; padding: 24px clamp(18px, 4vw, 34px); background: var(--glass); border: 1px solid #fff; border-radius: 24px; box-shadow: 0 14px 40px #a72d5b12; line-height: 1.85; text-align: left; }
+    .note h2 { text-align: center; color: #a52c5a; margin: 0 0 12px; }
+    .question { text-align: center; font-size: clamp(1.2rem, 4vw, 1.8rem); font-weight: 900; color: #c32f69; margin: 24px 0 14px; }
+    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    button {
+      border: 0; border-radius: 999px; padding: 13px 22px; cursor: pointer; font-weight: 800; font-size: .96rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    button:hover { transform: translateY(-3px); box-shadow: 0 8px 18px #a72d5b25; }
+    .yes { color: white; background: linear-gradient(135deg, #ff5d91, #d92e6c); }
+    .soft { color: #a52c5a; background: white; border: 1px solid #ffc0d6; }
+    #reply { min-height: 1.8em; margin: 17px 0 0; font-weight: 800; color: #bd3269; }
+    footer { color: #bd6a8a; font-size: .8rem; margin-top: 26px; }
+    @media (max-width: 600px) {
+      main { padding-top: 28px; }
+      .flip-card { height: 380px; }
+      .front img { height: 295px; }
+      .cards { gap: 18px; }
+      .note { text-align: left; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sparkle-bg" id="hearts" aria-hidden="true"></div>
+  <main>
+    <div class="eyebrow">a little something from the heart</div>
+    <h1>Para kay <span>Marca</span> 💗</h1>
+    <p class="subtitle">May mga bagay na mas madaling sabihin sa isang simpleng pahina… kaya ginawa ko ito para sa'yo. Bawat larawan ay may munting mensahe sa likod. ✨</p>
+    <div class="flowing" id="typing" aria-live="polite"></div>
+
+    <section class="cards" aria-label="Mga larawan na puwedeng i-flip">
+      <div class="flip-card" tabindex="0" role="button" aria-label="I-flip ang unang larawan para mabasa ang mensahe">
+        <div class="flip-inner">
+          <div class="face front">
+            <img src="images/marca-photo-1.jpg" alt="Larawan 1" />
+            <div class="photo-caption">Isang ngiti, isang alaala 💕</div>
+            <div class="tap-hint">Pindutin o i-click para i-flip ↻</div>
+          </div>
+          <div class="face back">
+            <div class="heart">💌</div>
+            <h2>Dear Marca,</h2>
+            <p>Hindi ko man laging masabi nang diretso, gusto kong malaman mo na napapasaya mo ang araw ko. May kakaiba kang dating na mahirap ipaliwanag, pero madaling maramdaman. Sana kahit papaano, napapangiti rin kita.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" tabindex="0" role="button" aria-label="I-flip ang ikalawang larawan para mabasa ang mensahe">
+        <div class="flip-inner">
+          <div class="face front">
+            <img src="images/marca-photo-2.jpg" alt="Larawan 2" />
+            <div class="photo-caption">May sasabihin lang ako… 🌷</div>
+            <div class="tap-hint">Pindutin o i-click para i-flip ↻</div>
+          </div>
+          <div class="face back">
+            <div class="heart">💖</div>
+            <h2>I like you.</h2>
+            <p>Gusto kitang makilala pa nang mas mabuti, makausap, at makasama sa masasayang simpleng moments. Hindi kita minamadali at wala akong gustong ipilit. Gusto ko lang maging totoo sa nararamdaman ko.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="note">
+      <h2>Isang munting pagtatapat 💗</h2>
+      <p>Marca, hindi ko alam kung ano ang magiging sagot mo, pero gusto kong maging honest sa'yo. Hindi naman kailangang maging perpekto ang mga salita para maging totoo ang isang nararamdaman. Masaya na akong masabi ito kaysa itago lang.</p>
+      <p>Kung hindi man pareho ang nararamdaman natin, rerespetuhin ko iyon. Ang mahalaga sa akin ay komportable ka at masaya ka. Pero kung may maliit na posibilidad na puwede rin akong magkaroon ng puwang sa puso mo, gusto kong subukan—dahan-dahan lang, walang pressure. 🌸</p>
+    </section>
+
+    <div class="question">May pag-asa ba ako sa'yo, Marca? 🥺💞</div>
+    <div class="actions">
+      <button class="yes" id="sweetBtn">May chance ka 💗</button>
+      <button class="soft" id="thinkBtn">Pag-iisipan ko muna 🌷</button>
+      <button class="soft" id="flipAllBtn">I-flip ang mga larawan ↻</button>
+    </div>
+    <p id="reply" aria-live="polite"></p>
+    <footer>Made with a little courage and lots of kilig · Para kay Marca 💕</footer>
+  </main>
+
+  <script>
+    // Typing / flowing message
+    const phrases = ["I love you, Marca 💗", "You make ordinary moments special ✨", "Isang honest na pagtatapat… 💌"];
+    const typing = document.getElementById("typing");
+    let phraseIndex = 0, charIndex = 0, deleting = false;
+    function typeLoop() {
+      const phrase = phrases[phraseIndex];
+      typing.textContent = phrase.slice(0, charIndex);
+      if (!deleting && charIndex < phrase.length) {
+        charIndex++;
+        setTimeout(typeLoop, 90);
+      } else if (!deleting) {
+        deleting = true;
+        setTimeout(typeLoop, 1250);
+      } else if (charIndex > 0) {
+        charIndex--;
+        setTimeout(typeLoop, 38);
+      } else {
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        setTimeout(typeLoop, 250);
+      }
+    }
+    typeLoop();
+
+    // Click, tap, or keyboard to flip each photo
+    const cards = [...document.querySelectorAll(".flip-card")];
+    cards.forEach(card => {
+      card.addEventListener("click", () => card.classList.toggle("flipped"));
+      card.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          card.classList.toggle("flipped");
+        }
+      });
+    });
+
+    document.getElementById("flipAllBtn").addEventListener("click", () => {
+      const allFlipped = cards.every(card => card.classList.contains("flipped"));
+      cards.forEach(card => card.classList.toggle("flipped", !allFlipped));
+    });
+    document.getElementById("sweetBtn").addEventListener("click", () => {
+      document.getElementById("reply").textContent = "Sana nga… 💗 Anuman ang sagot mo, salamat sa pagbasa ng munting pagtatapat na ito, Marca.";
+      burstHearts();
+    });
+    document.getElementById("thinkBtn").addEventListener("click", () => {
+      document.getElementById("reply").textContent = "Okay lang, Marca. Take your time—walang pressure. Ang mahalaga ay kung ano talaga ang nararamdaman mo. 🌷";
+    });
+
+    // Floating hearts in the background
+    const hearts = document.getElementById("hearts");
+    function addHeart() {
+      const heart = document.createElement("span");
+      heart.className = "float-heart";
+      heart.textContent = ["♥", "♡", "💗", "✦"][Math.floor(Math.random() * 4)];
+      heart.style.left = Math.random() * 100 + "%";
+      heart.style.fontSize = (14 + Math.random() * 24) + "px";
+      heart.style.animationDuration = (7 + Math.random() * 8) + "s";
+      hearts.appendChild(heart);
+      setTimeout(() => heart.remove(), 16000);
+    }
+    for (let i = 0; i < 15; i++) setTimeout(addHeart, i * 300);
+    setInterval(addHeart, 650);
+
+    function burstHearts() {
+      for (let i = 0; i < 18; i++) {
+        setTimeout(() => {
+          const heart = document.createElement("span");
+          heart.className = "float-heart";
+          heart.textContent = "💗";
+          heart.style.left = (35 + Math.random() * 30) + "%";
+          heart.style.fontSize = (18 + Math.random() * 18) + "px";
+          heart.style.animationDuration = (3 + Math.random() * 2) + "s";
+          hearts.appendChild(heart);
+          setTimeout(() => heart.remove(), 6000);
+        }, i * 70);
+      }
+    }
+  </script>
+</body>
+</html>
